@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"name": "OpenSky328",
+			"path": "..\\..\\..\\PlatformIO\\Projects\\OpenSky328"
+		}
+	],
+	"settings": {}
+}
