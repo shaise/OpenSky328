@@ -166,7 +166,7 @@ inline void hal_cc25xx_register_read_multi(uint8_t address, uint8_t *buffer, uin
     hal_spi_csn_hi();
 }
 
-inline void hal_cc25xx_register_write_multi(uint8_t address, uint8_t *buffer, uint8_t len) {
+void hal_cc25xx_register_write_multi(uint8_t address, uint8_t *buffer, uint8_t len) {
     // s elect device:
     hal_spi_csn_lo();
 
