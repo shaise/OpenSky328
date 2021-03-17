@@ -24,9 +24,9 @@ It is also arduino based.
 ## Assembling instructions
 
 * Order the PCB by sending the gerbrt files to a manufacturer of your choice. I recommend [JLCPCB](https://jlcpcb.com/).
- * [FR-8 gerber files](/Release/gerbers_fr8_V1_2Layer_FR4_1.6mm.zip) and [FR-8 pins gerber files](/Release/gerbers_frmini8_pins_V1_2Layer_FR4_1.6mm.zip)
- * [FR-Tiny](/Release/gerbers_frtiny_V5_4Layer_FR4_1.0mm.zip)
- * [FR-Pgm](/Release/gerbers_frmini_prog_V3_2Layer_FR4_1.6mm.zip)
+  * [FR-8 gerber files](/Release/gerbers_fr8_V1_2Layer_FR4_1.6mm.zip) and [FR-8 pins gerber files](/Release/gerbers_frmini8_pins_V1_2Layer_FR4_1.6mm.zip)
+  * [FR-Tiny](/Release/gerbers_frtiny_V5_4Layer_FR4_1.0mm.zip)
+  * [FR-Pgm](/Release/gerbers_frmini_prog_V3_2Layer_FR4_1.6mm.zip)
 * Order all parts as listed in the [BOM](/Release/OpenSkySimBom.pdf) file. You will need a 0603 kit of resistors and capacitors, and for all other parts you will find a link in the BOM.
 * Solder all parts. You can use the [Interactive BOM](https://htmlpreview.github.io/?https://github.com/shaise/OpenSkySim/blob/main/Hardware/Bom/Interactive_bom.html) to assist you. 
 * For the transmitter module, I used one without built in antenna, So if you are using the same module, you will need to add an antenna by soldering a 0.5mm transformer wire to the antenna pin, then trim the wire to a length of 31.5mm. (I tried one module with on board antenna but the reception was bad, If you find one that works, please let me know). Plese note: there are parts on both side of the PC
