@@ -90,7 +90,7 @@
       (mirror false)
       (drillshape 0)
       (scaleselection 1)
-      (outputdirectory "gerbers_frtiny8_V1"))
+      (outputdirectory "gerbers_fr8_V1"))
   )
 
   (net 0 "")
@@ -1655,7 +1655,7 @@
   (segment (start 68.5 67.38) (end 68.5 69.92) (width 0.5) (layer B.Cu) (net 32))
   (segment (start 68.5 69.92) (end 68.5 72.46) (width 0.5) (layer B.Cu) (net 32))
 
-  (zone (net 3) (net_name GND) (layer B.Cu) (tstamp 5FDBC951) (hatch edge 0.508)
+  (zone (net 3) (net_name GND) (layer B.Cu) (tstamp 6051E807) (hatch edge 0.508)
     (connect_pads (clearance 0.3))
     (min_thickness 0.254)
     (fill yes (arc_segments 16) (thermal_gap 0.3) (thermal_bridge_width 0.5))
