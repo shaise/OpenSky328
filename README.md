@@ -27,8 +27,14 @@ It is also arduino based.
   * [FR-8 gerber files](/Release/gerbers_fr8_V1_2Layer_FR4_1.6mm.zip) and [FR-8 pins gerber files](/Release/gerbers_frmini8_pins_V1_2Layer_FR4_1.6mm.zip)
   * [FR-Tiny](/Release/gerbers_frtiny_V5_4Layer_FR4_1.0mm.zip)
   * [FR-Pgm](/Release/gerbers_frmini_prog_V3_2Layer_FR4_1.6mm.zip)
-* Order all parts as listed in the [BOM](/Release/OpenSkySimBom.pdf) file. You will need a 0603 kit of resistors and capacitors, and for all other parts you will find a link in the BOM.
-* Solder all parts. You can use the [Interactive BOM](https://htmlpreview.github.io/?https://github.com/shaise/OpenSkySim/blob/main/Hardware/Bom/Interactive_bom.html) to assist you. 
+* Order all parts as listed in the BOM file. You will need a 0603 kit of resistors and capacitors, and for all other parts you will find a link in the BOM.
+  * [FR-8 BOM](/Release/FR8_bom.pdf)
+  * [FR-Tiny BOM](/Release/FRTiny.pdf)
+  * [FR-Pgm BOM](/Release/FRReceiverProg.pdf)
+* Solder all parts. You can use the interactive BOM to assist you.
+  * [FR-8 Interactive BOM](https://htmlpreview.github.io/?https://github.com/shaise/OpenSky328/blob/main/Hardware/FRReceiver8Pcb/bom/FR8_bom.html)
+  * [FR-Tiny Interactive BOM](https://htmlpreview.github.io/?https://github.com/shaise/OpenSky328/blob/main/Hardware/FRReceiverTinyPcb/bom/FRTiny.html)
+  * [FR-Pgm Interactive BOM](https://htmlpreview.github.io/?https://github.com/shaise/OpenSky328/blob/main/Hardware/FRReceiverProgPcb/bom/FRReceiverProg.html)
 
  
 
