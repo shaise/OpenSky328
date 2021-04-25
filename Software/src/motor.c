@@ -20,24 +20,38 @@
 */
 
 #include "motor.h"
+#include "debug.h"
 
 #ifdef MOTOR_ENABLED
 
-void motor_update(int16_t data)
+void motor_update(uint16_t *rx_vals)
 {
-    // convert frsky range (~1480...3020) -> to power (0 - 100)
-    // we narrow this to 1600 - 3000 to make sure we reach both sides
-    if (data < 1620) 
-        data = 0;      // safty - 1480 to 1620 is considered 0
+    uint8_t motor_vals[MOTOR_COUNT];
+    if (rx_vals == 0)
+    {
+        for (int i = 0; i < MOTOR_COUNT; i++)
+            motor_vals[i] = 0;
+    }
     else
     {
-        data -= 1600;
-        data /= 14;   // (3000 - 1600) / 100
-        if (data > 100)
-            data = 100;
+        for (int i = 0; i < MOTOR_COUNT; i++, rx_vals++)
+        {
+            // convert frsky range (~1480...3020) -> to power (0 - 100)
+            // we narrow this to 1600 - 3000 to make sure we reach both sides
+            uint16_t data = *rx_vals;
+            if (data < 1620)
+                data = 0; // safty - 1480 to 1620 is considered 0
+            else
+            {
+                data -= 1600;
+                data /= 14; // (3000 - 1600) / 100
+                if (data > 100)
+                    data = 100;
+            }
+            motor_vals[i] = (uint8_t)data;
+        }
     }
-    hal_motor_set_power((uint8_t)data);
+    hal_motor_set_power(motor_vals);
 }
 
-#endif  // MOTOR_ENABLED
-
+#endif // MOTOR_ENABLED

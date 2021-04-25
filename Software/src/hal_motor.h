@@ -26,23 +26,27 @@
 #include <avr/io.h>
 
 #ifdef MOTOR_ENABLED
-#define HAL_MOTOR_PORT PORTC
-#define HAL_MOTOR_PORT_DIR DDRC
-#define HAL_MOTOR_PORT_MASK 0X01 // PORT C PIN 0
 
 // power is between 0 and 100
 void hal_motor_init();
-void hal_motor_set_power(uint8_t pow);
+void hal_motor_set_power(uint8_t *pow);
 #define hal_motor_on() (HAL_MOTOR_PORT |= HAL_MOTOR_PORT_MASK)
 #define hal_motor_off() (HAL_MOTOR_PORT &= ~HAL_MOTOR_PORT_MASK)
 
-#else  // MOTOR_ENABLE
+#else // MOTOR_ENABLE
 
-#define hal_motor_init() {}
-#define hal_motor_set_power(pow) {}
-#define hal_motor_on() {}
-#define hal_motor_off() {}
+#define hal_motor_init() \
+    {                    \
+    }
+#define hal_motor_set_power(pow) \
+    {                            \
+    }
+#define hal_motor_on() \
+    {                  \
+    }
+#define hal_motor_off() \
+    {                   \
+    }
 
-
-#endif  // MOTOR_ENABLE
-#endif  //  HAL_MOTOR_H_
+#endif // MOTOR_ENABLE
+#endif //  HAL_MOTOR_H_

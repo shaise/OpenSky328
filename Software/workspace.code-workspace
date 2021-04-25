@@ -8,5 +8,11 @@
 			"path": "..\\..\\..\\PlatformIO\\Projects\\OpenSky328"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"files.associations": {
+			"storage.h": "c",
+			"frsky.h": "c",
+			"main.h": "c"
+		}
+	}
 }

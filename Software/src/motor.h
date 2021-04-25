@@ -25,12 +25,11 @@
 
 #ifndef MOTOR_ENABLED
 #define motor_init() hal_motor_init()
-void motor_update(uint16_t data);
+void motor_update(uint16_t *data);
 #else
 #define motor_init() hal_motor_init()
-void motor_update(int16_t data);
+void motor_update(uint16_t *data);
 
-#endif  // MOTOR_ENABLED
+#endif // MOTOR_ENABLED
 
-
-#endif  // MOTOR_H_
+#endif // MOTOR_H_

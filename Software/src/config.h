@@ -2,26 +2,30 @@
 #define __PIN_CONFIG_H__
 #include "main.h"
 
+#define RXBOARD_FR8_FRTINY
+//#define RXBOARD_FR4
+//#define RXBOARD_FRLVH
+
 /* TODO find correct pins for LEDs */
-#define LED_RED_PIN               (1<<5)
-#define LED_RED_OUT              PORTC
-#define LED_RED_DIR               DDRC
-#define LED_GREEN_PIN             (1<<4)
-#define LED_GREEN_OUT            PORTC
-#define LED_GREEN_DIR             DDRC
+#define LED_RED_PIN (1 << 5)
+#define LED_RED_OUT PORTC
+#define LED_RED_DIR DDRC
+#define LED_GREEN_PIN (1 << 4)
+#define LED_GREEN_OUT PORTC
+#define LED_GREEN_DIR DDRC
 
-#define ADC0_PIN                  A6
-#define ADC1_PIN                  A7
+#define ADC0_PIN A6
+#define ADC1_PIN A7
 
-#define BIND_PIN                  (1<<3)
-#define BIND_OUT                  PORTC
-#define BIND_IN                   PINC
-#define BIND_DIR                  DDRC
+#define BIND_PIN (1 << 3)
+#define BIND_OUT PORTC
+#define BIND_IN PINC
+#define BIND_DIR DDRC
 
-#define DEBUG_PIN_0               (1<<1)
-#define DEBUG_PIN_1               (1<<2)
-#define DEBUG_PIN_DIR             DDRC
-#define DEBUG_PIN_OUT             PORTC
+#define DEBUG_PIN_0 (1 << 1)
+#define DEBUG_PIN_1 (1 << 2)
+#define DEBUG_PIN_DIR DDRC
+#define DEBUG_PIN_OUT PORTC
 
 // system supports only one of the following: PWM, SBUS, PPM
 
@@ -32,79 +36,109 @@
 //       non inverted => idle = high
 #define SBUS_INVERTED
 
-// PPM 
+// PPM
 // #define PPM_ENABLED
 // invert SBUS output (normal is non inverted)
 // #define PPM_INVERTED
 
 // hub telemetry input (soft serial)
 // #define HUB_TELEMETRY_ON_SBUS_UART
-// #define HUB_TELEMETRY_INVERTED 
+// #define HUB_TELEMETRY_INVERTED
 // #define PPM_INVERTED
 
 // PWM
 #define PWM_ENABLED
-#define PWM_MAX_CHANNELS 8
 
 // failsafe: bind button press time in ms the will initiate failsafe programming sequence
-#define FAILSAFE_PRESS_TIME 50   // 5 seconds
-#define FAILSAFE_PROGRAM_WAIT_TIME 100   // 10 seconds
+#define FAILSAFE_PRESS_TIME 50         // 5 seconds
+#define FAILSAFE_PROGRAM_WAIT_TIME 100 // 10 seconds
 
-// MOTOR - if enabled will output a pwm waveform based on channel 3, suitable for DC motor
+// MOTOR - if enabled will output a pwm waveform based on selected channel, suitable for DC motors
+#if defined(RXBOARD_FR8_FRTINY)
+#define PWM_FIRST_CHANNEL 1
+#define PWM_LAST_CHANNEL 8
 #define MOTOR_ENABLED
 #define MOTOR_CHANNEL 3
+#define MOTOR_COUNT 1
+#define HAL_MOTOR_PORT PORTC
+#define HAL_MOTOR_PORT_DIR DDRC
+#define HAL_MOTOR_PORT_MASKS \
+    {                        \
+        0X01                 \
+    } // PORT C PIN 0
+#elif defined(RXBOARD_FRLVH)
+#define PWM_FIRST_CHANNEL 3
+#define PWM_LAST_CHANNEL 4
+#define MOTOR_ENABLED
+#define MOTOR_CHANNEL 1
+#define MOTOR_COUNT 2
+#define MOTOR_BIDIR
+#define MOTOR_ZERO 50    // % Position for 0 throttle
+#define MOTOR_FREERUN 40 // % Position for motor freerun
+#define MOTOR_BREAK 25   // % Position for motor break (motor reverse is 0 - motor break)
+#define HAL_MOTOR_PORT PORTB
+#define HAL_MOTOR_PORT_DIR DDRB
+#define HAL_MOTOR_PORT_MASKS   \
+    {                          \
+        0X02, 0x04, 0x01, 0x08 \
+    } // PORTB PINS (1 2),  (0 3)
+#endif
 
-#define SBUS_USART                 USART1
-#define SBUS_USART_CLK             RCC_APB2Periph_USART1
-#define SBUS_USART_RCC             2
-#define SBUS_USART_GPIO            GPIOA
-#define SBUS_USART_GPIO_CLK        RCC_APB2Periph_GPIOA
-#define SBUS_USART_GPIO_CLK_RCC    2
-#define SBUS_USART_TX_PIN          GPIO_Pin_9
-#define SBUS_USART_IRQHANDLER      USART1_IRQHandler
-#define SBUS_USART_IRQn            USART1_IRQn
+#define SBUS_USART USART1
+#define SBUS_USART_CLK RCC_APB2Periph_USART1
+#define SBUS_USART_RCC 2
+#define SBUS_USART_GPIO GPIOA
+#define SBUS_USART_GPIO_CLK RCC_APB2Periph_GPIOA
+#define SBUS_USART_GPIO_CLK_RCC 2
+#define SBUS_USART_TX_PIN GPIO_Pin_9
+#define SBUS_USART_IRQHANDLER USART1_IRQHandler
+#define SBUS_USART_IRQn USART1_IRQn
 
 #define USE_SOFTWARE_SPI
 
-#ifdef FR_OLD
-#define CC25XX_SPI_SCK_PIN          (1<<5) 
-#define CC25XX_SPI_SCK_OUT          PORTB
-#define CC25XX_SPI_SCK_DIR          DDRB
+#ifdef RXBOARD_FROLD
+#define CC25XX_SPI_SCK_PIN (1 << 5)
+#define CC25XX_SPI_SCK_OUT PORTB
+#define CC25XX_SPI_SCK_DIR DDRB
 
-#define CC25XX_SPI_MOSI_PIN         (1<<3) 
-#define CC25XX_SPI_MOSI_OUT         PORTB
-#define CC25XX_SPI_MOSI_DIR         DDRB
+#define CC25XX_SPI_MOSI_PIN (1 << 3)
+#define CC25XX_SPI_MOSI_OUT PORTB
+#define CC25XX_SPI_MOSI_DIR DDRB
 
-#define CC25XX_SPI_MISO_PIN         (1<<4) 
-#define CC25XX_SPI_MISO_OUT         PORTB
-#define CC25XX_SPI_MISO_IN          PINB
-#define CC25XX_SPI_MISO_DIR         DDRB
+#define CC25XX_SPI_MISO_PIN (1 << 4)
+#define CC25XX_SPI_MISO_OUT PORTB
+#define CC25XX_SPI_MISO_IN PINB
+#define CC25XX_SPI_MISO_DIR DDRB
 
-#define CC25XX_SPI_CSN_PIN          (1<<2) 
-#define CC25XX_SPI_CSN_OUT          PORTB
-#define CC25XX_SPI_CSN_DIR          DDRB
+#define CC25XX_SPI_CSN_PIN (1 << 2)
+#define CC25XX_SPI_CSN_OUT PORTB
+#define CC25XX_SPI_CSN_DIR DDRB
 #else
-#define CC25XX_SPI_SCK_PIN          (1<<3) 
-#define CC25XX_SPI_SCK_OUT          PORTD
-#define CC25XX_SPI_SCK_DIR          DDRD
+#define CC25XX_SPI_SCK_PIN (1 << 3)
+#define CC25XX_SPI_SCK_OUT PORTD
+#define CC25XX_SPI_SCK_DIR DDRD
 
-#define CC25XX_SPI_MOSI_PIN         (1<<2) 
-#define CC25XX_SPI_MOSI_OUT         PORTD
-#define CC25XX_SPI_MOSI_DIR         DDRD
+#define CC25XX_SPI_MOSI_PIN (1 << 2)
+#define CC25XX_SPI_MOSI_OUT PORTD
+#define CC25XX_SPI_MOSI_DIR DDRD
 
-#define CC25XX_SPI_MISO_PIN         (1<<4) 
-#define CC25XX_SPI_MISO_OUT         PORTD
-#define CC25XX_SPI_MISO_IN          PIND
-#define CC25XX_SPI_MISO_DIR         DDRD
+#define CC25XX_SPI_MISO_PIN (1 << 4)
+#define CC25XX_SPI_MISO_OUT PORTD
+#define CC25XX_SPI_MISO_IN PIND
+#define CC25XX_SPI_MISO_DIR DDRD
 
-#define CC25XX_SPI_CSN_PIN          (1<<5) 
-#define CC25XX_SPI_CSN_OUT          PORTD
-#define CC25XX_SPI_CSN_DIR          DDRD
+#ifdef RXBOARD_FRLVH
+#define CC25XX_SPI_CSN_PIN (1 << 6)
+#else
+#define CC25XX_SPI_CSN_PIN (1 << 5)
+#endif
+#define CC25XX_SPI_CSN_OUT PORTD
+#define CC25XX_SPI_CSN_DIR DDRD
 #endif // FR_OLD
 
-#define CC25XX_SPI_GDO1_PIN         CC25XX_SPI_MISO_PIN
-#define CC25XX_SPI_GDO1_IN          CC25XX_SPI_MISO_IN
-#define CC25XX_SPI_GDO1_DIR         CC25XX_SPI_MISO_DIR
+#define CC25XX_SPI_GDO1_PIN CC25XX_SPI_MISO_PIN
+#define CC25XX_SPI_GDO1_IN CC25XX_SPI_MISO_IN
+#define CC25XX_SPI_GDO1_DIR CC25XX_SPI_MISO_DIR
 
 /* 
     XSR uses the Skyworks SE2431 range extender
@@ -122,36 +156,33 @@
     CTX (PA15) is 0 then RX LNA mode active, or 1 then tx mode
     CPS (PB3) is 0 then bypass mode is active, 1 is bypass off.
     CSD (PB4) with 1 to enable chip (0 = sleep)
-*/ 
+*/
 
 /* TODO revisit base on the above */
-#define CC25XX_ANT_SW_CTX_GPIO     GPIOC
+#define CC25XX_ANT_SW_CTX_GPIO GPIOC
 #define CC25XX_ANT_SW_CTX_GPIO_CLK RCC_APB2Periph_GPIOC
 #define CC25XX_ANT_SW_CTX_GPIO_CLK_RCC 2
-#define CC25XX_ANT_SW_CTX_PIN      GPIO_Pin_15
+#define CC25XX_ANT_SW_CTX_PIN GPIO_Pin_15
 
-
-#define CC25XX_ANT_SW_CRX_GPIO     GPIOC
+#define CC25XX_ANT_SW_CRX_GPIO GPIOC
 #define CC25XX_ANT_SW_CRX_GPIO_CLK RCC_APB2Periph_GPIOC
 #define CC25XX_ANT_SW_CRX_GPIO_CLK_RCC 2
-#define CC25XX_ANT_SW_CRX_PIN      GPIO_Pin_14
+#define CC25XX_ANT_SW_CRX_PIN GPIO_Pin_14
 
-
-#define CC25XX_LNA_SW_CTX_GPIO     GPIOA
+#define CC25XX_LNA_SW_CTX_GPIO GPIOA
 #define CC25XX_LNA_SW_CTX_GPIO_CLK RCC_APB2Periph_GPIOA
 #define CC25XX_LNA_SW_CTX_GPIO_CLK_RCC 2
-#define CC25XX_LNA_SW_CTX_PIN      GPIO_Pin_15
+#define CC25XX_LNA_SW_CTX_PIN GPIO_Pin_15
 
-
-#define CC25XX_LNA_SW_CRX_GPIO     GPIOB
+#define CC25XX_LNA_SW_CRX_GPIO GPIOB
 #define CC25XX_LNA_SW_CRX_GPIO_CLK RCC_APB2Periph_GPIOB
 #define CC25XX_LNA_SW_CRX_GPIO_CLK_RCC 2
-#define CC25XX_LNA_SW_CRX_PIN      GPIO_Pin_4
+#define CC25XX_LNA_SW_CRX_PIN GPIO_Pin_4
 
 /* NOTE no analogue input for XSR, and no servo pins */
 
 // cppm output is on PB12
-#define PPM_PIN                   2
+#define PPM_PIN 2
 /* TODO: ??? chose timer for pin */
 //#define PPM_TIMER_IRQHANDLER      TIM3_IRQHandler
 
@@ -160,9 +191,9 @@
 
     PB11 for RX and PB10 for TX both inverted once leaving board.
     Output Enable (OE) is PA2
-*/    
+*/
 #define SOFT_SERIAL_GPIO 0
-#define SOFT_SERIAL_PIN  1
+#define SOFT_SERIAL_PIN 1
 
 // THIS CONFIGURES IRQ PRIORITIES - DO NOT MESS THIS UP!
 // this is the most critical stuff:
