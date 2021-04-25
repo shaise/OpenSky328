@@ -424,7 +424,7 @@ L Device:R R1
 U 1 1 60045E50
 P 4000 3550
 F 0 "R1" H 4070 3596 50  0000 L CNN
-F 1 "R" H 4070 3505 50  0000 L CNN
+F 1 "10K_0603" H 4250 3600 50  0000 L CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 3930 3550 50  0001 C CNN
 F 3 "~" H 4000 3550 50  0001 C CNN
 	1    4000 3550
@@ -441,4 +441,50 @@ Wire Wire Line
 	4350 3300 4000 3300
 Text Label 4150 3300 0    50   ~ 0
 VCC
+$Comp
+L Connector_Generic:Conn_02x04_Odd_Even J10
+U 1 1 60755EBC
+P 3400 2550
+F 0 "J10" H 3450 2867 50  0000 C CNN
+F 1 "Conn_02x04_Odd_Even" H 3450 2776 50  0000 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_2x04_P2.54mm_Vertical" H 3400 2550 50  0001 C CNN
+F 3 "~" H 3400 2550 50  0001 C CNN
+	1    3400 2550
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	4200 2550 3600 2550
+Wire Wire Line
+	4200 2450 3600 2450
+Wire Wire Line
+	3600 2650 4200 2650
+Text Label 3750 2650 0    50   ~ 0
+VCC
+Wire Wire Line
+	2650 2900 2650 2750
+$Comp
+L power:GND #PWR01
+U 1 1 607754AC
+P 2650 2900
+F 0 "#PWR01" H 2650 2650 50  0001 C CNN
+F 1 "GND" H 2655 2727 50  0000 C CNN
+F 2 "" H 2650 2900 50  0001 C CNN
+F 3 "" H 2650 2900 50  0001 C CNN
+	1    2650 2900
+	1    0    0    -1  
+$EndComp
+Text Label 2800 2450 0    50   ~ 0
+MOSI
+Text Label 2800 2550 0    50   ~ 0
+CLK
+Text Label 3750 2550 0    50   ~ 0
+MISO
+Text Label 3750 2450 0    50   ~ 0
+RESET
+Wire Wire Line
+	2650 2450 3100 2450
+Wire Wire Line
+	2650 2550 3100 2550
+Wire Wire Line
+	2650 2750 3100 2750
 $EndSCHEMATC
