@@ -32,7 +32,7 @@ It is also arduino based.
   * [FR-8 gerber files](/Release/gerbers_fr8_V1_2Layer_FR4_1.6mm.zip) and [FR-8 pins gerber files](/Release/gerbers_frmini8_pins_V1_2Layer_FR4_1.6mm.zip)
   * [FR-Tiny](/Release/gerbers_frtiny_V5_4Layer_FR4_1.0mm.zip)
   * [FR-LVH](/Release/gerbers_frlvh_V2_SWPWM_4Layer_FR4_1.0mm.zip)
-  * [FR-Pgm](/Release/gerbers_frmini_prog_V3_2Layer_FR4_1.6mm.zip)
+  * [FR-Pgm](/Release/gerbers_frmini_prog_V4_2Layer_FR4_1.6mm.zip)
 * Order all parts as listed in the BOM file. You will need a 0603 kit of resistors and capacitors, and for all other parts you will find a link in the BOM.
   * [FR-8 BOM](/Release/FR8_bom.pdf)
   * [FR-Tiny BOM](/Release/FRTiny.pdf)
