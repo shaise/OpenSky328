@@ -66,7 +66,8 @@ For FR-LVH:
 <img src="/Media/FRLVH_Connect.jpg" width="400">
   
 * Now open the 'Software' folder within VS Code. If you get a mesage that a workspace was detected, go ahead and press the "open workspace" button.
-* If everything is connected correctly, just press the 'PlatformIO: Build" button at the bottom (the right arrow) and thats it!
+* On the left, click the PlatformIO icon (bug head), and from the "Project Tasks" menu, click the "Set fuses" line (should be under nanoatmega328->Platform). If everything is connected correctly, the Microcontroller fuses will be programmed.
+* Now just press the 'PlatformIO: Upload" button at the bottom (the right arrow) and thats it!
 
 ## Usage
 These receivers works with FR-Sky telemetry compatible transmitters (D8). (SW 1 and 2 off on DJT modules)
