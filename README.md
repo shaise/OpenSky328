@@ -62,7 +62,7 @@ For FR-8:
 For FR-Tiny:  
 <img src="/Media/FRTinyConnect.jpg" width="400">
   
-For FR-LVH:
+For FR-LVH:  
 <img src="/Media/FRLVH_Connect.jpg" width="400">
   
 * Now open the 'Software' folder within VS Code. If you get a mesage that a workspace was detected, go ahead and press the "open workspace" button.
