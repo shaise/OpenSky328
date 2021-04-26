@@ -1,5 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:FRLibraryLVH-cache
+LIBS:FRReceiverLVH-cache
 EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268

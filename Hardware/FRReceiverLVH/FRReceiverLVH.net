@@ -1,6 +1,6 @@
 (export (version D)
   (design
-    (source D:\shai\_people\frsky_rc\OpenSky328\Hardware\FRReceiverLVH\FRLibraryLVH.sch)
+    (source D:\shai\_people\frsky_rc\OpenSky328\Hardware\FRReceiverLVH\FRReceiverLVH.sch)
     (date "25/04/2021 15:54:27")
     (tool "Eeschema (5.0.2)-1")
     (sheet (number 1) (name /) (tstamps /)
@@ -9,7 +9,7 @@
         (company)
         (rev)
         (date)
-        (source FRLibraryLVH.sch)
+        (source FRReceiverLVH.sch)
         (comment (number 1) (value ""))
         (comment (number 2) (value ""))
         (comment (number 3) (value ""))
