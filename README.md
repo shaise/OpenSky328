@@ -47,9 +47,11 @@ It is also arduino based.
  ## Programming the firmware
 * Clone or download this repository.
 * Edit config.h file and set the correct PCB version by uncommenting the correct line:  
+
 Comment | Board support  
 --- | ---  
-define RXBOARD_FR8_FRTINY | FR-8 or FR-Tiny boards  
+#define RXBOARD_FR8_FRTINY | FR-8 or FR-Tiny boards  
+#define RXBOARD_FRLVH | FR-LVH land vehicle boards  
 * You will need a USBASB compatible programmer and either the programmin adapter above (recomended) or connect your own wires.
 * NOTE!!! USBASP must be 3.3V version or you risk damaging the receiver.
 * The software is arduino compatible (Arduino nano), so it should work with the Arduino IDE, however I did not test that. Instead I recommend using the [VS Studio Code IDE](https://code.visualstudio.com). You will need to install the C/C++ Addon, and the Platform IO addon (from the addon menu). Within Platform IO install the Atmel AVR platform.
@@ -59,7 +61,10 @@ For FR-8:
   
 For FR-Tiny:  
 <img src="/Media/FRTinyConnect.jpg" width="400">
-
+  
+For FR-LVH:
+<img src="/Media/FRLVH_Connect.jpg" width="400">
+  
 * Now open the 'Software' folder within VS Code. If you get a mesage that a workspace was detected, go ahead and press the "open workspace" button.
 * If everything is connected correctly, just press the 'PlatformIO: Build" button at the bottom (the right arrow) and thats it!
 
@@ -77,7 +82,7 @@ If you want to debug the receiver operation, you can use a serial terminal (buil
 * Use a USB to serial Adapter. If you want to use the USB-serial to power the module, Make sure its a 3.3V version, or you risk damaging the modules.
 * Connect the USB-Serial adapter to the programming adapter using the marked pins.
 * Connect the programming adapter to the module as explained in the programming section.
-* For the FR-Tiny you are all set. For the FR-8 you will need an extra cable (jst to jst 1.0 mm 3pin) to connect the module to the serial input:  
+* For the FR-Tiny you are all set. For the FR-8 / FR-LVH you will need an extra cable (jst to jst 1.0 mm 3pin) to connect the module to the serial input:  
 <img src="/Media/FR8_serial.jpg" width="400">
  
 
