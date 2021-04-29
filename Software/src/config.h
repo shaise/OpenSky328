@@ -2,8 +2,8 @@
 #define __PIN_CONFIG_H__
 #include "main.h"
 
-#define RXBOARD_FR8_FRTINY
-//#define RXBOARD_FR4
+//#define RXBOARD_FR8_FRTINY
+#define RXBOARD_FR4
 //#define RXBOARD_FRLVH
 
 /* TODO find correct pins for LEDs */
@@ -82,6 +82,9 @@
     {                          \
         0X02, 0x04, 0x01, 0x08 \
     } // PORTB PINS (1 2),  (0 3)
+#elif defined(RXBOARD_FR4)
+#define PWM_FIRST_CHANNEL 1
+#define PWM_LAST_CHANNEL 4
 #endif
 
 #define SBUS_USART USART1

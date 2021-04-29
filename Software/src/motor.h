@@ -24,8 +24,8 @@
 #include "hal_motor.h"
 
 #ifndef MOTOR_ENABLED
-#define motor_init() hal_motor_init()
-void motor_update(uint16_t *data);
+#define motor_init()
+#define motor_update(X)
 #else
 #define motor_init() hal_motor_init()
 void motor_update(uint16_t *data);
