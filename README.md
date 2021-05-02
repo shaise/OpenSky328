@@ -9,7 +9,7 @@ List of devices:
 * FR-Tiny: A 5 channel micro receiver with brushed motor ESC, for micro rc planes. Weights just 2 grams.
 * FR-LVH: A 1S land vehicle version with 2 bidirectional brushed motor esc (ch:1,2) and 2 servos (ch:3,4).
 * Programmer adapter: Lets you connect above devices to a USBASP programmer, and USB-SERIAL adapter
-The hardware is bases on Atmega 329p microcontroller and TI CC2500 transceiver. 
+The hardware is based on Atmega 328p microcontroller and TI CC2500 transceiver. 
 The firmware is based on OpenSky FrSky-compatible receiver: https://github.com/fishpepper/OpenSky
 It is also arduino based.
 
